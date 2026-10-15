@@ -1,0 +1,202 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap');
+
+@font-face {
+  font-family: 'THSarabunNew';
+  src: url('https://cdn.jsdelivr.net/npm/font-th-sarabun-new@1.0.0/fonts/THSarabunNew-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'THSarabunNew';
+  src: url('https://cdn.jsdelivr.net/npm/font-th-sarabun-new@1.0.0/fonts/THSarabunNew_bold-webfont.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+
+
+
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Kanit", ui-sans-serif, system-ui, sans-serif;
+  --font-heading: "Kanit", sans-serif;
+  --font-mitr: "Kanit", sans-serif;
+  --font-mono: "Kanit", ui-monospace, SFMono-Regular, monospace;
+  --font-sarabun: "THSarabunNew", sans-serif;
+}
+
+html {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #fcf8f5;
+  color: #2d2621;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+#root {
+  width: 100%;
+  max-width: 100vw;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+img, svg, video, canvas, audio, iframe, embed, object {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Touch friendly scrolling for overflow containers without breaking horizontal page boundaries */
+.custom-scrollbar {
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Custom scrollbar for beautiful orange theme */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #fdf2e9;
+}
+::-webkit-scrollbar-thumb {
+  background: #ffaa7a;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #f97316;
+}
+
+/* Leaflet map fixes */
+.leaflet-container {
+  z-index: 1 !important;
+  background-color: #f8f9fa !important;
+}
+
+.leaflet-control-attribution, .leaflet-control-zoom {
+  display: none !important;
+}
+
+.leaflet-tile-pane {
+  z-index: 1 !important;
+}
+
+/* Ensure tiles aren't hidden by global image styles */
+.leaflet-tile {
+  max-width: none !important;
+  max-height: none !important;
+  visibility: inherit !important;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Make all input fields distinct from background */
+input:not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="range"]), 
+textarea, 
+select {
+  background-color: #f8fafc !important; /* slate-50 */
+  border-color: #cbd5e1 !important; /* slate-300 */
+  color: #0f172a !important; /* slate-900 */
+}
+
+input:not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="range"]):focus, 
+textarea:focus, 
+select:focus {
+  background-color: #ffffff !important;
+  border-color: #3b82f6 !important; /* blue-500 */
+  color: #0f172a !important;
+}
+
+/* Print & PDF Export Rules - Ensure printed output matches preview exactly */
+@media print {
+  @page {
+    margin: 5mm;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #111827 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Hide interactive controls, buttons, toolbars, backdrops */
+  button,
+  a.btn,
+  .no-print,
+  [role="button"],
+  .fixed.inset-0 > div:first-child,
+  .sticky.bottom-3,
+  .bg-amber-50\/90,
+  nav,
+  header {
+    display: none !important;
+  }
+
+  /* Ensure a4-sheet renders identical to preview without gray card drop-shadow */
+  .a4-sheet {
+    box-shadow: none !important;
+    border: none !important;
+    margin: 0 auto !important;
+    page-break-after: always !important;
+    break-after: page !important;
+    background: #ffffff !important;
+  }
+
+  .a4-sheet:last-child {
+    page-break-after: auto !important;
+    break-after: auto !important;
+  }
+
+  #printable-volunteer-profile {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    padding: 20px;
+    background: white !important;
+    color: black !important;
+  }
+
+  .print\:hidden {
+    display: none !important;
+  }
+}

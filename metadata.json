@@ -1,0 +1,6 @@
+{
+  "name": "งานป้องกันและบรรเทาสาธารณภัย อบต. ม่อนจอง",
+  "description": "ระบบปฏิบัติการและฐานข้อมูลงานป้องกันและบรรเทาสาธารณภัย อบต. ม่อนจอง อ.อมก๋อย จ.เชียงใหม่ เชื่อมโยงฐานข้อมูลหลัก Google Sheets",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
