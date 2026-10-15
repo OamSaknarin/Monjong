@@ -227,14 +227,6 @@ export default function Volunteers({
           </div>
           <div className="flex items-center gap-2">
             <button
-              type="button"
-              onClick={() => setIsPdfModalOpen(true)}
-              className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-4 py-2 bg-sky-600 text-white rounded-xl hover:bg-sky-700 font-medium shadow-xs transition-colors cursor-pointer"
-              title="พิมพ์หรือส่งออกรายงาน PDF ทำเนียบ อปพร."
-            >
-              <Printer className="w-4 h-4" /> พิมพ์ / รายงาน PDF
-            </button>
-            <button
               onClick={exportVolunteersToSheet}
               className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-4 py-2 bg-emerald-600 text-white rounded-xl hover:bg-emerald-700 font-medium shadow-xs transition-colors cursor-pointer"
               title="ส่งออกประวัติ อปพร. ทั้งหมดลง Excel / Sheet"
@@ -307,12 +299,6 @@ export default function Volunteers({
                   className="py-2 px-2.5 bg-blue-50 text-blue-700 rounded-xl text-xs font-bold hover:bg-blue-100 transition-colors flex items-center justify-center gap-1"
                 >
                   <Eye className="w-3.5 h-3.5" /> รายละเอียด
-                </button>
-                <button
-                  onClick={() => handlePrintPDF(vol)}
-                  className="py-2 px-2.5 bg-emerald-50 text-emerald-700 rounded-xl text-xs font-bold hover:bg-emerald-100 transition-colors flex items-center justify-center gap-1"
-                >
-                  <Printer className="w-3.5 h-3.5" /> รายงาน .PDF
                 </button>
                 <button
                   onClick={() => {
@@ -1795,15 +1781,6 @@ export default function Volunteers({
                   <Download className="w-3.5 h-3.5" />
                 )}
                 <span>{isDownloadingDetailPdf ? 'กำลังสร้าง...' : 'ดาวน์โหลด .PDF'}</span>
-              </button>
-
-              <button
-                type="button"
-                onClick={() => window.print()}
-                className="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white rounded-xl font-bold text-xs flex items-center gap-1.5 border border-slate-700 transition cursor-pointer"
-                title="พิมพ์เอกสาร"
-              >
-                <Printer className="w-3.5 h-3.5" /> พิมพ์
               </button>
 
               <button

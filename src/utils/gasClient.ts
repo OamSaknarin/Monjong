@@ -4,7 +4,7 @@ const GAS_URL_KEY = 'orange_office_gas_url';
 const LOCAL_USERS_KEY = 'orange_office_local_users';
 const LOCAL_DATA_KEY = 'orange_office_local_data';
 
-export const DEFAULT_GAS_URL = 'https://script.google.com/macros/s/AKfycbzTtfmjczO0hufiGxVcacxBpfIpZV2OVt7WAwU__OrJcVfvcUxPpeuTzVHyArZsHxnyMA/exec';
+export const DEFAULT_GAS_URL = 'https://script.google.com/macros/s/AKfycbw-D9bj8vbdLPqA9sleuapGlud4WHfTmU8v7bVBMCWR4IRAE-90yIhPSEjcPHdscWuE_Q/exec';
 export const DEFAULT_SPREADSHEET_ID = '1M42M6H3nTJ0Cvb7uL3Ku76Ub97PAKMKjxnDLyCA4kbw';
 
 // ฟังก์ชันล้างค่าและฟอร์แมตวันที่ให้เป็น YYYY-MM-DD เสมอ
@@ -75,7 +75,8 @@ export const getGasUrl = (): string => {
       trimmed === 'https://script.google.com/macros/s/AKfycbwnb-cWno6Umu5LHAv0UUmKph4OwpHKudhAl7aFkQKS4Hzqa9H_ZUTx5dDS3k7DWcYWNg/exec' ||
       trimmed === 'https://script.google.com/macros/s/AKfycbyEekErNVgdGyl44XJ2QoGEMMkmDW8eKnX5dXUXsl83fUgFq5lFp51qkJ6ZfP4G-LdyCQ/exec' ||
       trimmed === 'https://script.google.com/macros/s/AKfycbz-N8D9chy1yZTxehibR0yAIbc6Dbizf_DmfHdq7pT4yIobe6PGX_BAn6igN6IMrcRRwQ/exec' ||
-      trimmed === 'https://script.google.com/macros/s/AKfycbzhSXl3SmGRFamek7QycwZwFZOiutQPOlgiGaOs_OlOcmmcYcUa3I6N--aSYzf1TD2JBw/exec'
+      trimmed === 'https://script.google.com/macros/s/AKfycbzhSXl3SmGRFamek7QycwZwFZOiutQPOlgiGaOs_OlOcmmcYcUa3I6N--aSYzf1TD2JBw/exec' ||
+      trimmed === 'https://script.google.com/macros/s/AKfycbzTtfmjczO0hufiGxVcacxBpfIpZV2OVt7WAwU__OrJcVfvcUxPpeuTzVHyArZsHxnyMA/exec'
     ) {
       localStorage.setItem(GAS_URL_KEY, DEFAULT_GAS_URL);
       return DEFAULT_GAS_URL;

@@ -217,15 +217,6 @@ export default function RelatedWebsites({ links, onSaveLinks, showToast, showCon
         <div className="flex items-center gap-2">
           <button
             type="button"
-            onClick={() => setIsPdfModalOpen(true)}
-            className="flex items-center space-x-2 px-4 py-2.5 rounded-xl border-2 border-pink-300 bg-pink-50/80 hover:bg-pink-100/90 text-pink-900 text-xs sm:text-sm font-heading font-extrabold transition-all duration-200 shadow-sm active:scale-95 cursor-pointer"
-            title="พิมพ์หรือส่งออกรายงาน PDF เว็บไซต์เกี่ยวข้อง"
-          >
-            <Printer className="w-4 h-4 text-pink-600" />
-            <span>พิมพ์ / รายงาน PDF</span>
-          </button>
-          <button
-            type="button"
             onClick={handleExport}
             className="flex items-center space-x-2 px-4 py-2.5 rounded-xl border-2 border-pink-200 text-pink-800 hover:text-white hover:bg-pink-500 hover:border-pink-500 text-xs sm:text-sm font-heading font-extrabold transition-all duration-200 shadow-sm active:scale-95 cursor-pointer"
           >

@@ -321,15 +321,6 @@ export default function CloudStorage({ files, onSaveFiles, currentUser, showToas
           <div className="flex flex-wrap items-center gap-2">
             <button
               type="button"
-              onClick={() => setIsPdfModalOpen(true)}
-              className="flex items-center space-x-2 px-3.5 py-2.5 rounded-xl border border-sky-300 bg-sky-50/80 hover:bg-sky-100/90 text-sky-900 text-xs font-heading font-extrabold transition-all duration-200 shadow-xs active:scale-95 cursor-pointer shrink-0"
-              title="พิมพ์หรือส่งออกรายงาน PDF รายการไฟล์"
-            >
-              <Printer className="w-4 h-4 text-sky-600" />
-              <span>พิมพ์ / รายงาน PDF</span>
-            </button>
-            <button
-              type="button"
               onClick={handleExportExcel}
               className="flex items-center space-x-2 px-3.5 py-2.5 rounded-xl border border-cyan-200 bg-white hover:bg-cyan-50 text-cyan-800 text-xs font-heading font-extrabold transition-all duration-200 shadow-xs active:scale-95 cursor-pointer shrink-0"
               title="ส่งออกรายการไฟล์ลง Excel"
