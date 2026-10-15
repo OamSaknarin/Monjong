@@ -13,7 +13,8 @@ app.use(express.text({ limit: '50mb' }));
 app.post(['/api/gas', '/gas'], async (req, res) => {
   try {
     const { url, action, payload } = req.body;
-    if (!url) {
+    const targetUrl = url || process.env.GAS_URL || process.env.VITE_GAS_URL || 'https://script.google.com/macros/s/AKfycbw5Ak6yho_xQPzeJOAV3YJFi-WkAf7GD5iiVv5uldw522f4vTbOUprT1ge7t_e6VSUn/exec';
+    if (!targetUrl) {
       return res.status(400).json({ success: false, error: 'Missing URL' });
     }
 
@@ -24,7 +25,7 @@ app.post(['/api/gas', '/gas'], async (req, res) => {
 
     let text = '';
     try {
-      const response = await fetch(url, {
+      const response = await fetch(targetUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'text/plain;charset=utf-8' },
         body: JSON.stringify({ action, payload: payload || {} }),
