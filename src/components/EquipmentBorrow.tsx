@@ -1427,6 +1427,15 @@ export default function EquipmentBorrow({
             <h3 className="font-heading font-bold text-orange-950 text-sm">รายการจัดทำและคงคลังอุปกรณ์</h3>
             <div className="flex flex-wrap items-center gap-2">
               <button
+                type="button"
+                onClick={() => setIsPdfModalOpen(true)}
+                className="px-3.5 py-1.5 rounded-lg border border-sky-200 bg-sky-50/70 hover:bg-sky-100/80 text-sky-800 text-xs font-heading font-semibold flex items-center gap-1.5 transition cursor-pointer shadow-xs active:scale-95"
+                title="พิมพ์หรือส่งออกรายงาน PDF"
+              >
+                <Printer className="w-4 h-4 text-sky-600" />
+                <span>พิมพ์ / รายงาน PDF</span>
+              </button>
+              <button
                 onClick={handleStartNewDispense}
                 className="px-3.5 py-1.5 rounded-lg bg-purple-600 hover:bg-purple-700 text-white font-heading text-xs font-semibold flex items-center gap-1.5 transition cursor-pointer shadow-xs active:scale-95"
                 id="btn-add-dispense"
@@ -1818,7 +1827,7 @@ export default function EquipmentBorrow({
       {activeTab === 'search-export' && (
         <div className="space-y-6">
           <div className="bg-orange-50/20 border border-orange-100 p-4 rounded-xl space-y-3">
-            <h4 className="font-heading font-bold text-orange-950 text-xs">กรองข้อมูลและค้นหาสำหรับส่งออกรายงาน</h4>
+            <h4 className="font-heading font-bold text-orange-950 text-xs">กรองข้อมูลและค้นหาสำหรับพิมพ์งานสรุปรายงาน</h4>
             
             <div className="grid grid-cols-1 md:grid-cols-4 gap-3">
               <div className="md:col-span-2 relative">
@@ -1866,6 +1875,15 @@ export default function EquipmentBorrow({
               พบข้อมูลที่ตรงกับตัวกรอง <span className="font-bold text-orange-600">{filteredEquipment.length}</span> รายการ
             </p>
             <div className="flex items-center gap-2">
+              <button
+                type="button"
+                onClick={() => setIsPdfModalOpen(true)}
+                className="px-3.5 py-1.5 rounded-lg border border-sky-200 bg-sky-50/70 hover:bg-sky-100/80 text-sky-800 text-xs font-heading font-semibold flex items-center gap-1.5 transition cursor-pointer shadow-xs active:scale-95"
+                title="พิมพ์หรือส่งออกรายงาน PDF"
+              >
+                <Printer className="w-4 h-4 text-sky-600" />
+                <span>พิมพ์ / รายงาน PDF</span>
+              </button>
               <button
                 onClick={handleExportExcel}
                 className="px-3.5 py-1.5 rounded-lg border border-orange-200 hover:bg-orange-50 text-orange-800 text-xs font-heading font-semibold flex items-center gap-1.5 transition cursor-pointer"

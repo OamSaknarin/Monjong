@@ -424,6 +424,15 @@ export default function Expenses({ expenses, onSaveExpenses, showToast, showConf
         <div className="flex flex-wrap items-center gap-2">
           <button
             type="button"
+            onClick={() => setIsPdfModalOpen(true)}
+            className="flex items-center space-x-2 px-4 py-2.5 rounded-xl border-2 border-emerald-300 bg-emerald-50/80 hover:bg-emerald-100/90 text-emerald-800 text-xs sm:text-sm font-heading font-extrabold transition-all duration-200 shadow-sm active:scale-95 cursor-pointer"
+            title="พิมพ์หรือส่งออกรายงาน PDF"
+          >
+            <Printer className="w-4 h-4 text-emerald-700" />
+            <span>พิมพ์ / รายงาน PDF</span>
+          </button>
+          <button
+            type="button"
             onClick={handleExport}
             className="flex items-center space-x-2 px-4 py-2.5 rounded-xl border-2 border-emerald-200 text-emerald-800 hover:text-white hover:bg-emerald-500 hover:border-emerald-500 text-xs sm:text-sm font-heading font-extrabold transition-all duration-200 shadow-sm active:scale-95 cursor-pointer"
           >

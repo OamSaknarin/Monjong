@@ -574,11 +574,21 @@ export default function EquipmentDispense({
                   ระบบบันทึกและจัดการการเบิกพัสดุ-อุปกรณ์
                 </h1>
                 <p className="text-amber-100 text-xs sm:text-sm max-w-xl font-medium">
-                  บันทึกการขอเบิกพัสดุ-วัสดุ อนุมัติการจ่ายของ และซิงก์ข้อมูลลง Google Sheets อัตโนมัติ
+                  บันทึกการขอเบิกพัสดุ-วัสดุ อนุมัติการจ่ายของ พิมพ์ใบเบิกมาตรฐาน A4 และซิงก์ข้อมูลลง Google Sheets อัตโนมัติ
                 </p>
               </div>
 
               <div className="flex flex-wrap items-center gap-2.5 shrink-0">
+                <button
+                  type="button"
+                  onClick={() => setIsReportPdfModalOpen(true)}
+                  className="px-4 py-2.5 bg-white/20 hover:bg-white/30 text-white text-xs font-heading font-bold rounded-2xl border border-white/30 backdrop-blur-md transition flex items-center gap-2 cursor-pointer shadow-xs active:scale-95"
+                  title="พิมพ์และออกรายงานสรุปการเบิกพัสดุ (PDF)"
+                >
+                  <Printer className="w-4 h-4" />
+                  <span>พิมพ์ / รายงาน PDF</span>
+                </button>
+
                 {onNavigateToBorrow && (
                   <button
                     type="button"
@@ -697,6 +707,17 @@ export default function EquipmentDispense({
             </div>
 
             <div className="flex flex-wrap items-center gap-2">
+              <button
+                type="button"
+                onClick={handleSyncToSheet}
+                disabled={isSyncing}
+                className="px-3.5 py-2 bg-emerald-50 hover:bg-emerald-100 text-emerald-700 border border-emerald-200 rounded-xl text-xs font-heading font-bold transition flex items-center gap-1.5 cursor-pointer shadow-xs disabled:opacity-50"
+                title="บันทึกประวัติการเบิกอุปกรณ์ทั้งหมดลงใน Google Sheets ทันที"
+              >
+                <CloudUpload className={`w-4 h-4 ${isSyncing ? 'animate-pulse' : ''}`} />
+                <span>{isSyncing ? 'กำลังบันทึกลง Sheet...' : 'บันทึกลง Sheet'}</span>
+              </button>
+
               <button
                 type="button"
                 onClick={handleRefreshSheet}
@@ -851,9 +872,9 @@ export default function EquipmentDispense({
                             setIsPdfModalOpen(true);
                           }}
                           className="px-2.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-white rounded-lg text-xs font-heading font-bold transition flex items-center gap-1 cursor-pointer shadow-xs"
-                          title="ดูใบเบิกพัสดุ A4"
+                          title="ดูและพิมพ์ใบเบิกพัสดุ A4"
                         >
-                          <FileText className="w-3.5 h-3.5" />
+                          <Printer className="w-3.5 h-3.5" />
                           <span>ใบเบิก A4</span>
                         </button>
 
@@ -989,7 +1010,7 @@ export default function EquipmentDispense({
               <span>ค้นหาและส่งออกรายงานการเบิกพัสดุอุปกรณ์</span>
             </h3>
             <p className="text-gray-500 text-xs mt-1">
-              กรองข้อมูลตามช่วงวันที่ แผนก หรือคำค้นหา เพื่อส่งออกเป็นไฟล์ Excel
+              กรองข้อมูลตามช่วงวันที่ แผนก หรือคำค้นหา เพื่อพิมพ์รายงานหรือส่งออกเป็นไฟล์ Excel
             </p>
           </div>
 
@@ -1049,6 +1070,15 @@ export default function EquipmentDispense({
               พบข้อมูลตรงตามเงื่อนไข <strong className="text-amber-800 font-bold">{filteredSlips.length}</strong> ใบเบิก ({dispenses.length} รายการพัสดุ)
             </span>
             <div className="flex items-center gap-2">
+              <button
+                type="button"
+                onClick={() => setIsReportPdfModalOpen(true)}
+                className="px-4 py-2.5 bg-sky-600 hover:bg-sky-700 text-white rounded-xl text-xs font-heading font-bold transition flex items-center gap-2 cursor-pointer shadow-md active:scale-95"
+                title="พิมพ์และออกรายงานสรุปการเบิกพัสดุ (PDF)"
+              >
+                <Printer className="w-4 h-4" />
+                <span>พิมพ์ / รายงาน PDF</span>
+              </button>
               <button
                 type="button"
                 onClick={handleExportExcel}

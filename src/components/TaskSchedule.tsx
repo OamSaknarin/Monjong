@@ -688,6 +688,15 @@ export default function TaskSchedule({ tasks, onSaveTasks, docs, onSaveDocs, sho
         <div className="flex flex-wrap items-center gap-2">
           <button
             type="button"
+            onClick={handleExportPdf}
+            className="flex items-center space-x-2 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl border-2 border-red-200 text-red-800 hover:text-white hover:bg-red-500 hover:border-red-500 text-xs sm:text-sm font-heading font-extrabold transition-all duration-200 shadow-xs active:scale-95 cursor-pointer"
+            title="พิมพ์ / ส่งออกรายงานตารางปฏิบัติงานและภารกิจ (PDF)"
+          >
+            <Printer className="w-4 h-4" />
+            <span>พิมพ์รายงาน PDF</span>
+          </button>
+          <button
+            type="button"
             onClick={handleExport}
             className="flex items-center space-x-2 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl border-2 border-rose-200 text-rose-800 hover:text-white hover:bg-rose-500 hover:border-rose-500 text-xs sm:text-sm font-heading font-extrabold transition-all duration-200 shadow-xs active:scale-95 cursor-pointer"
             title="ส่งออกเป็น Excel"

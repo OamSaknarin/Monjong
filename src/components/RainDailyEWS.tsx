@@ -1755,6 +1755,15 @@ export default function RainDailyEWS({ showToast, showConfirm, tasks = [], expen
               <div className="flex items-center gap-2 self-start sm:self-auto shrink-0 flex-wrap w-full lg:w-auto">
                 <button
                   type="button"
+                  onClick={openExportDialog}
+                  className="flex-1 sm:flex-none justify-center px-3.5 py-2 bg-sky-600 hover:bg-sky-700 text-white font-heading font-bold text-xs rounded-xl shadow-xs border border-sky-500 transition flex items-center gap-1.5 cursor-pointer active:scale-95"
+                  title="พิมพ์และรายงาน PDF"
+                >
+                  <Printer className="w-3.5 h-3.5" />
+                  <span>พิมพ์ / รายงาน PDF</span>
+                </button>
+                <button
+                  type="button"
                   onClick={() => setIsPdfModalOpen(true)}
                   className="flex-1 sm:flex-none justify-center px-3.5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-heading font-bold text-xs rounded-xl shadow-xs border border-emerald-500 transition flex items-center gap-1.5 cursor-pointer active:scale-95"
                   title="ส่งออกรายงานสถานการณ์เป็นรูปภาพ"
@@ -2240,6 +2249,15 @@ export default function RainDailyEWS({ showToast, showConfirm, tasks = [], expen
                   className="flex-[0.8] py-2.5 bg-gray-100 hover:bg-gray-200 text-gray-700 font-heading font-bold text-xs rounded-xl transition cursor-pointer"
                 >
                   ยกเลิก
+                </button>
+                <button
+                  type="button"
+                  onClick={() => confirmExport('print')}
+                  className="flex-[1] py-2.5 bg-slate-700 hover:bg-slate-800 text-white font-heading font-bold text-xs rounded-xl shadow-md transition flex items-center justify-center gap-1.5 cursor-pointer"
+                  title="พิมพ์รายงานออกทางเครื่องพิมพ์"
+                >
+                  <Printer className="w-3.5 h-3.5" />
+                  พิมพ์
                 </button>
                 <button
                   type="button"

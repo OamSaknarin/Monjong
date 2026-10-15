@@ -743,6 +743,15 @@ export default function OfficialDocs({ docs, onSaveDocs, tasks, onSaveTasks, sho
             <div className="flex flex-wrap items-center gap-2 w-full sm:w-auto">
               <button
                 type="button"
+                onClick={() => setIsPdfModalOpen(true)}
+                className="flex-1 sm:flex-none justify-center items-center space-x-2 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl border-2 border-purple-200 text-purple-800 hover:text-white hover:bg-purple-600 hover:border-purple-600 text-xs sm:text-sm font-heading font-extrabold transition-all duration-200 shadow-xs active:scale-95 cursor-pointer flex"
+                title="พิมพ์ / ส่งออกรายงานทะเบียนหนังสือราชการ (PDF)"
+              >
+                <Printer className="w-4 h-4" />
+                <span>พิมพ์รายงาน PDF</span>
+              </button>
+              <button
+                type="button"
                 onClick={handleExport}
                 className="flex-1 sm:flex-none justify-center items-center space-x-2 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl border-2 border-purple-200 text-purple-800 hover:text-white hover:bg-purple-500 hover:border-purple-500 text-xs sm:text-sm font-heading font-extrabold transition-all duration-200 shadow-xs active:scale-95 cursor-pointer flex"
                 title="ส่งออกเป็น Excel"

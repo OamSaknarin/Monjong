@@ -740,6 +740,15 @@ export default function EmployeeInfo({ employees, onSaveEmployees, showToast, sh
         <div className="flex items-center gap-2">
           <button
             type="button"
+            onClick={() => setIsPdfModalOpen(true)}
+            className="flex items-center space-x-2 px-4 py-2.5 rounded-xl border-2 border-orange-300 bg-orange-50/80 hover:bg-orange-100/90 text-orange-900 text-xs sm:text-sm font-heading font-extrabold transition-all duration-200 shadow-sm active:scale-95 cursor-pointer"
+            title="พิมพ์หรือส่งออกรายงาน PDF"
+          >
+            <Printer className="w-4 h-4 text-orange-600" />
+            <span>พิมพ์ / รายงาน PDF</span>
+          </button>
+          <button
+            type="button"
             onClick={handleExport}
             className="flex items-center space-x-2 px-4 py-2.5 rounded-xl border-2 border-orange-200 text-orange-800 hover:text-white hover:bg-orange-500 hover:border-orange-500 text-xs sm:text-sm font-heading font-extrabold transition-all duration-200 shadow-sm active:scale-95 cursor-pointer"
           >
