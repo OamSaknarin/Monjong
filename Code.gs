@@ -120,7 +120,9 @@ function bootstrapSheets() {
     "เว็บไซต์เกี่ยวข้อง": ["ID", "Name", "Details", "URL"],
     "ข้อมูลพนักงาน": ["ID", "Name", "Nickname", "Position", "BirthDate", "Age", "HouseNo", "Subdistrict", "District", "Province", "Zipcode", "Tel", "PhotoUrl", "History"],
     "สถานที่ตำบลม่อนจอง": ["ID", "Name", "Details", "Lat", "Long", "Type"],
-    "คลาวด์ไฟล์": ["ID", "FileName", "FileType", "FileSize", "UploadDate", "ExpiryDate", "DataUrl", "Uploader"]
+    "คลาวด์ไฟล์": ["ID", "FileName", "FileType", "FileSize", "UploadDate", "ExpiryDate", "DataUrl", "Uploader"],
+    "ฐานข้อมูลอปพร": ["ID", "Code", "Name", "IdCard", "BirthDate", "Age", "BloodGroup", "Address", "Tel", "Position", "Status", "PhotoUrl"],
+    "การเงินอปพร": ["ID", "VolunteerId", "VolunteerName", "Date", "Amount", "Type", "Note"]
   };
   
   for (var sheetName in sheets) {
@@ -260,7 +262,9 @@ function getAllData() {
     "เว็บไซต์เกี่ยวข้อง": "links",
     "ข้อมูลพนักงาน": "employees",
     "สถานที่ตำบลม่อนจอง": "locations",
-    "คลาวด์ไฟล์": "cloudFiles"
+    "คลาวด์ไฟล์": "cloudFiles",
+    "ฐานข้อมูลอปพร": "volunteers",
+    "การเงินอปพร": "volunteerFinances"
   };
   
   for (var sheetName in sheetsMapping) {
@@ -329,7 +333,9 @@ function saveAllData(payload) {
     "links": { name: "เว็บไซต์เกี่ยวข้อง", headers: ["ID", "Name", "Details", "URL"] },
     "employees": { name: "ข้อมูลพนักงาน", headers: ["ID", "Name", "Nickname", "Position", "BirthDate", "Age", "HouseNo", "Subdistrict", "District", "Province", "Zipcode", "Tel", "PhotoUrl", "History"] },
     "locations": { name: "สถานที่ตำบลม่อนจอง", headers: ["ID", "Name", "Details", "Lat", "Long", "Type"] },
-    "cloudFiles": { name: "คลาวด์ไฟล์", headers: ["ID", "FileName", "FileType", "FileSize", "UploadDate", "ExpiryDate", "DataUrl", "Uploader"] }
+    "cloudFiles": { name: "คลาวด์ไฟล์", headers: ["ID", "FileName", "FileType", "FileSize", "UploadDate", "ExpiryDate", "DataUrl", "Uploader"] },
+    "volunteers": { name: "ฐานข้อมูลอปพร", headers: ["ID", "Code", "Name", "IdCard", "BirthDate", "Age", "BloodGroup", "Address", "Tel", "Position", "Status", "PhotoUrl"] },
+    "volunteerFinances": { name: "การเงินอปพร", headers: ["ID", "VolunteerId", "VolunteerName", "Date", "Amount", "Type", "Note"] }
   };
   
   for (var payloadKey in payload) {

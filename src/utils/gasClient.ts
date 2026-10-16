@@ -465,7 +465,12 @@ const clientMapHeaderToKey = (header: string): string => {
     "UploadDate": "uploadDate",
     "ExpiryDate": "expiryDate",
     "DataUrl": "dataUrl",
-    "Uploader": "uploader"
+    "Uploader": "uploader",
+    "IdCard": "idCard",
+    "BloodGroup": "bloodGroup",
+    "Address": "address",
+    "VolunteerId": "volunteerId",
+    "VolunteerName": "volunteerName"
   };
   return mapping[header] || header.toLowerCase();
 };
@@ -544,7 +549,9 @@ const fetchDirectFromSheets = async (spreadsheetId: string): Promise<typeof init
     links: { name: "เว็บไซต์เกี่ยวข้อง", headers: ["ID", "Name", "Details", "URL"] },
     employees: { name: "ข้อมูลพนักงาน", headers: ["ID", "Name", "Nickname", "Position", "BirthDate", "Age", "HouseNo", "Subdistrict", "District", "Province", "Zipcode", "Tel", "PhotoUrl", "History"] },
     locations: { name: "สถานที่ตำบลม่อนจอง", headers: ["ID", "Name", "Details", "Lat", "Long", "Type"] },
-    cloudFiles: { name: "คลาวด์ไฟล์", headers: ["ID", "FileName", "FileType", "FileSize", "UploadDate", "ExpiryDate", "DataUrl", "Uploader"] }
+    cloudFiles: { name: "คลาวด์ไฟล์", headers: ["ID", "FileName", "FileType", "FileSize", "UploadDate", "ExpiryDate", "DataUrl", "Uploader"] },
+    volunteers: { name: "ฐานข้อมูลอปพร", headers: ["ID", "Code", "Name", "IdCard", "BirthDate", "Age", "BloodGroup", "Address", "Tel", "Position", "Status", "PhotoUrl"] },
+    volunteerFinances: { name: "การเงินอปพร", headers: ["ID", "VolunteerId", "VolunteerName", "Date", "Amount", "Type", "Note"] }
   };
 
   const results: any = {};
@@ -675,7 +682,9 @@ export const fetchAllData = async (): Promise<typeof initialDefaultData> => {
           links: rawData.links || rawData['เว็บไซต์เกี่ยวข้อง'] || [],
           employees: rawData.employees || rawData['ข้อมูลพนักงาน'] || [],
           locations: rawData.locations || rawData['สถานที่ตำบลม่อนจอง'] || [],
-          cloudFiles: rawData.cloudFiles || rawData['คลาวด์ไฟล์'] || []
+          cloudFiles: rawData.cloudFiles || rawData['คลาวด์ไฟล์'] || [],
+          volunteers: rawData.volunteers || rawData['ฐานข้อมูลอปพร'] || [],
+          volunteerFinances: rawData.volunteerFinances || rawData['การเงินอปพร'] || []
         };
         
         // ตรวจสอบว่าถ้าข้อมูลว่างเปล่า และผู้ใช้ระบุ URL Google Sheet โดยตรง ให้ลองดึงตรงจาก Google Sheet
@@ -715,6 +724,12 @@ export const fetchAllData = async (): Promise<typeof initialDefaultData> => {
               }
               if (directData.cloudFiles && directData.cloudFiles.length > 0 && normalizedData.cloudFiles.length === 0) {
                 normalizedData.cloudFiles = directData.cloudFiles;
+              }
+              if (directData.volunteers && directData.volunteers.length > 0 && normalizedData.volunteers.length === 0) {
+                normalizedData.volunteers = directData.volunteers;
+              }
+              if (directData.volunteerFinances && directData.volunteerFinances.length > 0 && normalizedData.volunteerFinances.length === 0) {
+                normalizedData.volunteerFinances = directData.volunteerFinances;
               }
             } catch (fallbackErr) {
               console.error('Failed secondary direct Sheets fetch merge:', fallbackErr);
