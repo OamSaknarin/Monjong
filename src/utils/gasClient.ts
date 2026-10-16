@@ -4,7 +4,7 @@ const GAS_URL_KEY = 'orange_office_gas_url';
 const LOCAL_USERS_KEY = 'orange_office_local_users';
 const LOCAL_DATA_KEY = 'orange_office_local_data';
 
-export const DEFAULT_GAS_URL = 'https://script.google.com/macros/s/AKfycbwIfRpRhrR7xgfTN8rrnchjolChNZYVBuEhPb1MD4vWY6468tsmSIR-yATg0DChhWiLrw/exec';
+export const DEFAULT_GAS_URL = 'https://script.google.com/macros/s/AKfycbw6xdKuka9zGSy6gIdk0uSZ9CmGUQBXUzQTZWQsShhB6mdTOk-4UPzC_KW1-KcPqjBGzg/exec';
 export const DEFAULT_SPREADSHEET_ID = '1M42M6H3nTJ0Cvb7uL3Ku76Ub97PAKMKjxnDLyCA4kbw';
 
 // ฟังก์ชันล้างค่าและฟอร์แมตวันที่ให้เป็น YYYY-MM-DD เสมอ
