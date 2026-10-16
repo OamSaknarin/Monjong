@@ -585,13 +585,6 @@ export const mergeRemoteWithLocal = (
     const remoteArr = (remoteData as any)[k];
     const localArr = (localData as any)[k] || [];
 
-    // สำหรับตารางการเบิกพัสดุอุปกรณ์ (dispenses) ยึดข้อมูลจริงจาก Google Sheets เป็นหลัก 100%
-    // หากฝั่ง Server ตอบกลับมา (แม้เป็น Array ว่าง 0 รายการ) ให้ใช้ข้อมูลจริงจากชีตทันที ไม่ใช้ตัวอย่าง
-    if (k === 'dispenses' && Array.isArray(remoteArr)) {
-      result[k] = remoteArr;
-      continue;
-    }
-
     if (Array.isArray(remoteArr) && remoteArr.length > 0) {
       const localMap = new Map(localArr.map((item: any) => [String(item.id || item.ID || ''), item]));
       const remoteIds = new Set(remoteArr.map((item: any) => String(item.id || item.ID || '')));

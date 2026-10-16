@@ -531,10 +531,6 @@ export default function App() {
         const token = await getAccessToken();
         if (token) {
           await updateDispensesToSheet(nextDispenses);
-          const freshDispenses = await fetchDispensesFromSheet();
-          if (freshDispenses && freshDispenses.length > 0) {
-            setDispenses(freshDispenses);
-          }
         }
       } catch (e) {
         console.error('Failed to sync dispenses to Sheets via API:', e);

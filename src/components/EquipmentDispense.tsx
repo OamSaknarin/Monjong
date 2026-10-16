@@ -33,7 +33,7 @@ type SubTab = 'dispense-records' | 'inventory-status' | 'search-export';
 
 export default function EquipmentDispense({
   equipment,
-  dispenses,
+  dispenses = [],
   borrows = [],
   onSaveEquipment,
   onSaveDispenses,
@@ -50,6 +50,7 @@ export default function EquipmentDispense({
   const [isReportPdfModalOpen, setIsReportPdfModalOpen] = useState(false);
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [isSyncing, setIsSyncing] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // คำนวณจำนวนอุปกรณ์ที่ถูกเบิกจ่ายไปแล้ว (เฉพาะสถานะ 'เบิกจ่ายแล้ว' หรือ 'รออนุมัติ')
   const dispensedQtyMap = useMemo(() => {
@@ -309,7 +310,7 @@ export default function EquipmentDispense({
       onSaveDispenses(updated);
       onSaveEquipment(updatedEquipment);
       saveDispensesToGas(updated).catch(e => console.warn('Background dispense sheet sync:', e));
-      showToast('บันทึกการแก้ไขรายการเบิกพัสดุและอัปเดตลง Google Sheet เรียบร้อยแล้ว', 'info');
+      showToast('บันทึกการแก้ไขรายการเบิกพัสดุและซิงก์ลง Google Sheet แล้ว', 'success');
       handleCloseModal();
     } else {
       // Create new dispense records
@@ -362,7 +363,7 @@ export default function EquipmentDispense({
       onSaveDispenses(updated);
       onSaveEquipment(updatedEquipment);
       saveDispensesToGas(updated).catch(e => console.warn('Background dispense sheet sync:', e));
-      showToast('บันทึกรายการเบิกพัสดุและบันทึกลง Google Sheet เรียบร้อยแล้ว', 'info');
+      showToast('บันทึกรายการเบิกพัสดุและบันทึกลง Google Sheet สำเร็จแล้ว', 'success');
       handleCloseModal();
       
       // Prompt open PDF slip
@@ -407,7 +408,7 @@ export default function EquipmentDispense({
     onSaveDispenses(updated);
     onSaveEquipment(updatedEquipment);
     saveDispensesToGas(updated).catch(e => console.warn('Background dispense sheet sync:', e));
-    showToast('ลบรายการเบิกและอัปเดต Google Sheet เรียบร้อยแล้ว', 'info');
+    showToast('ลบรายการเบิกและซิงก์ Google Sheet แล้ว', 'success');
   };
 
   // Grouped Dispense Slips for Display
