@@ -4,7 +4,7 @@ const GAS_URL_KEY = 'orange_office_gas_url';
 const LOCAL_USERS_KEY = 'orange_office_local_users';
 const LOCAL_DATA_KEY = 'orange_office_local_data';
 
-export const DEFAULT_GAS_URL = 'https://script.google.com/macros/s/AKfycbw5Ak6yho_xQPzeJOAV3YJFi-WkAf7GD5iiVv5uldw522f4vTbOUprT1ge7t_e6VSUn/exec';
+export const DEFAULT_GAS_URL = 'https://script.google.com/macros/s/AKfycbwIfRpRhrR7xgfTN8rrnchjolChNZYVBuEhPb1MD4vWY6468tsmSIR-yATg0DChhWiLrw/exec';
 export const DEFAULT_SPREADSHEET_ID = '1M42M6H3nTJ0Cvb7uL3Ku76Ub97PAKMKjxnDLyCA4kbw';
 
 // ฟังก์ชันล้างค่าและฟอร์แมตวันที่ให้เป็น YYYY-MM-DD เสมอ
@@ -762,7 +762,11 @@ export const fetchAllData = async (): Promise<typeof initialDefaultData> => {
 export const saveAllCollections = async (data: typeof initialDefaultData): Promise<{success: boolean, error?: string}> => {
   const normalized = normalizeCollections(data);
   // บันทึกลง LocalStorage เสมอ
-  localStorage.setItem(LOCAL_DATA_KEY, JSON.stringify(normalized));
+  try {
+    localStorage.setItem(LOCAL_DATA_KEY, JSON.stringify(normalized));
+  } catch (e) {
+    console.warn('LocalStorage quota exceeded in saveAllCollections:', e);
+  }
 
   const gasUrl = getGasUrl();
   if (gasUrl) {
@@ -814,7 +818,11 @@ export const saveSingleCollection = async (
     [collectionKey]: items
   };
   const normalized = normalizeCollections(updatedCache);
-  localStorage.setItem(LOCAL_DATA_KEY, JSON.stringify(normalized));
+  try {
+    localStorage.setItem(LOCAL_DATA_KEY, JSON.stringify(normalized));
+  } catch (e) {
+    console.warn('LocalStorage quota exceeded, clearing old cache or skipping local storage write:', e);
+  }
 
   const gasUrl = getGasUrl();
   if (gasUrl) {
